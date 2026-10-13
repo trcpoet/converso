@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Converso
 
-## Getting Started
+A real-time AI teaching platform. Learners pick (or build) an AI tutor for a subject and topic, then hold a live voice lesson with it.
 
-First, run the development server:
+> Built while following the [JavaScript Mastery](https://jsmastery.pro/) LMS SaaS course, as my own version of the project.
+
+## Status
+
+🚧 Early setup. The project scaffold, design tokens, and base UI components are in place; features are being built out.
+
+- [x] Next.js app with Tailwind CSS v4 and shadcn/ui
+- [x] Design tokens, subject colours, icons, and shared types
+- [ ] Home, companion library, and subject/topic filters
+- [ ] Companion builder (subject, topic, voice, style, duration)
+- [ ] Live voice lessons with transcript
+- [ ] Authentication
+- [ ] Bookmarks and session history ("My Journey")
+- [ ] Subscription plans and usage limits
+
+## Tech stack
+
+| Area | Choice |
+| --- | --- |
+| Framework | [Next.js 15](https://nextjs.org/) (App Router) + React 19 |
+| Language | TypeScript |
+| Styling | [Tailwind CSS v4](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/) (Radix) |
+| Forms | react-hook-form + [Zod](https://zod.dev/) |
+| URL query helpers | [@jsmastery/utils](https://www.npmjs.com/package/@jsmastery/utils) |
+| Planned | Clerk (auth & billing), Supabase (database), Vapi (voice AI), Sentry (monitoring) |
+
+## Getting started
+
+Requires Node.js 20 or newer.
 
 ```bash
+git clone https://github.com/trcpoet/converso.git
+cd converso
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server (Turbopack) |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/          Routes, root layout, global styles
+components/   App components; shadcn/ui primitives live in components/ui
+constants/    Subjects, subject colours, voices, sample data
+lib/          Shared helpers (cn, getSubjectColor)
+public/       Icons and images
+types/        Global TypeScript types
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+None are needed yet. As auth, database, and voice features land, keys will go in `.env.local` (gitignored).
